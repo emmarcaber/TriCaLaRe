@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class PatientFactory extends Factory
      */
     public function definition(): array
     {
+        $date_of_birth = fake()->date();
+
         return [
-            //
+            'name' => fake()->name(),
+            'age' => Carbon::parse($date_of_birth)->age,
+            'sex' => fake()->randomElement([0, 1, 2]),
+            'date_of_birth' => $date_of_birth,
+            'contact_number' => '09' . fake()->numerify("#########"),
+            'medical_history' => fake()->randomElement(['None', 'Hypertension', 'Asthma', 'Eczema', 'Osteoarthritis', 'Diabetes', 'Heart disease', 'COPD']),
+            'allergies' => fake()->randomElement(['None', 'Penicillin', 'Lactose'])
         ];
     }
 }

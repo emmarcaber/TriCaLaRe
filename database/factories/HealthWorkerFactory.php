@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class HealthWorkerFactory extends Factory
      */
     public function definition(): array
     {
+        $date_of_birth = fake()->dateTimeInInterval('-25 years', '-35 years');
+
         return [
-            //
+            'name' => fake()->name(),
+            'age' => Carbon::parse($date_of_birth)->age,
+            'sex' => fake()->randomElement([0, 1, 2]),
+            'date_of_birth' => $date_of_birth,
+            'contact_number' => '09' . fake()->numerify("#########"),
+            'position' => fake()->randomElement(['Nurse', 'Doctor']),
+            'work_experience' => fake()->numberBetween(1, Carbon::parse($date_of_birth)->age - 20)
         ];
     }
 }

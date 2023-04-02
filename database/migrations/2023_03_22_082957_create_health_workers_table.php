@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('contact_number', 50);
             $table->string('position', 50);
-            $table->string('work_experience', 50);
+            $table->smallInteger('work_experience');
             $table->timestamps();
         });
     }

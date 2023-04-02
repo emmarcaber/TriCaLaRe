@@ -18,7 +18,6 @@ return new class extends Migration
             $table->tinyInteger('sex');
             $table->date('date_of_birth');
             $table->string('contact_number', 50);
-            $table->string('chief_complaint', 50);
             $table->string('medical_history', 50);
             $table->string('allergies', 50);
             $table->timestamps();
